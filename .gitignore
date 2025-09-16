@@ -2,3 +2,4 @@ service-account.json
 .env
 .venv/
 __pycache__/
+scratch.txt
