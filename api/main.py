@@ -25,7 +25,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"message": "This is a basic FastAPI application."}
+    return {"message": "Welcome to Jesús's FastAPI application!"}
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
