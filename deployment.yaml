@@ -15,7 +15,7 @@ spec:
       serviceAccountName: fastapi-sa-k8s  # Use this KSA so pods can access GCP Storage
       containers:
       - name: fastapi
-        image: us-east1-docker.pkg.dev/avid-water-471202-b4/my-repo/docker-fastapi:latest
+        image: us-east1-docker.pkg.dev/avid-water-471202-b4/docker-repo/docker-fastapi:latest
         ports:
         - containerPort: 80
         env:
