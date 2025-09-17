@@ -15,11 +15,7 @@ load_dotenv()
 
 project_id = os.getenv("GCP_PROJECT_ID")
 
-credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-if credentials_path:
-    client = storage.Client.from_service_account_json(credentials_path)
-else:
-    client = storage.Client(project=os.getenv("GCP_PROJECT_ID"))
+client = storage.Client(project=os.getenv("GCP_PROJECT_ID"))
 
 app = FastAPI()
 
@@ -55,7 +51,7 @@ bucket_name = 'my_generated_qrs' # Add your bucket name here
 
 @app.get("/test")
 def testStorageConnection():
-    client = storage.Client()
+    client = storage.Client(project="avid-water-471202-b4")
 
     # Try to get the bucket
     bucket = client.bucket(bucket_name)
@@ -92,7 +88,7 @@ async def generate_qr(url: str):
     try:
         # Upload to S3
         # s3.put_object(Bucket=bucket_name, Key=file_name, Body=img_byte_arr, ContentType='image/png', ACL='public-read')
-        client = storage.Client()
+        client = storage.Client(project="avid-water-471202-b4")
         bucket = client.bucket(bucket_name)
         blob = bucket.blob(file_name)
         blob.upload_from_string(img_byte_arr, content_type="image/png")

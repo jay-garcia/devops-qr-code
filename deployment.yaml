@@ -13,9 +13,11 @@ spec:
         app: fastapi
     spec:
       serviceAccountName: fastapi-sa-k8s  # Use this KSA so pods can access GCP Storage
+      namespace: default
       containers:
       - name: fastapi
         image: us-east1-docker.pkg.dev/avid-water-471202-b4/docker-repo/docker-fastapi:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         env:
