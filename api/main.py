@@ -13,6 +13,10 @@ from google.cloud import storage
 from dotenv import load_dotenv
 load_dotenv()
 
+from pydantic import BaseModel
+class QRRequest(BaseModel):
+    url: str
+
 project_id = os.getenv("GCP_PROJECT_ID")
 
 client = storage.Client(project=os.getenv("GCP_PROJECT_ID"))
@@ -64,7 +68,9 @@ def testStorageConnection():
 
 
 @app.post("/generate-qr/")
-async def generate_qr(url: str):
+async def generate_qr(request: QRRequest):
+    url = request.url
+
     # Generate QR Code
     qr = qrcode.QRCode(
         version=1,
@@ -91,11 +97,12 @@ async def generate_qr(url: str):
         client = storage.Client(project="avid-water-471202-b4")
         bucket = client.bucket(bucket_name)
         blob = bucket.blob(file_name)
-        blob.upload_from_string(img_byte_arr, content_type="image/png")
-        blob.make_public()
+        blob.upload_from_file(img_byte_arr, content_type="image/png")
+        # blob.make_public()
         # Generate the S3 URL
         gcs_url = f"https://storage.googleapis.com/{bucket_name}/{file_name}"
         return {"qr_code_url": gcs_url}
     except Exception as e:
+        print("QR Code Generation Failed: ", str(e))
         raise HTTPException(status_code=500, detail=str(e))
     
