@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+spec:
+  ingressClassName: gce
+  rules:
+  - http:
+      paths:
+      # Route /generate-qr to backend
+      - path: /generate-qr
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service
+            port:
+              number: 8000    # backend Service port
+      # Route / (everything else) to frontend
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80      # frontend Service port (Ingress points here)

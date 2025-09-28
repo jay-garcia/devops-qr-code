@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qr-code-frontend-deployment
+  namespace: default
+spec:
+  replicas: 1                       # Number of pods to run
+  selector:
+    matchLabels:
+      app: qr-code-frontend                  # Pods with this label belong to this deployment
+  template:
+    metadata:
+      labels:
+        app: qr-code-frontend
+    spec:
+      containers:
+      - name: qr-code-frontend
+        image: us-east1-docker.pkg.dev/avid-water-471202-b4/docker-repo/devops-qr-code-frontend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: GCP_PROJECT_ID
+          value: "avid-water-471202-b4"

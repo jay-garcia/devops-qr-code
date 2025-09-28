@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastapi-deployment
+  name: qr-code-api-deployment
+  namespace: default
 spec:
   replicas: 1                       # Number of pods to run
   selector:
@@ -13,10 +14,10 @@ spec:
         app: fastapi
     spec:
       serviceAccountName: fastapi-sa-k8s  # Use this KSA so pods can access GCP Storage
-      namespace: default
+      
       containers:
       - name: fastapi
-        image: us-east1-docker.pkg.dev/avid-water-471202-b4/docker-repo/docker-fastapi:latest
+        image: us-east1-docker.pkg.dev/avid-water-471202-b4/docker-repo/devops-qr-code-api:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
