@@ -3,35 +3,40 @@ name: Build and Push to Google Artifact Registry
 on:
   push:
     branches:
-      - main   # trigger on pushes to main branch
+      - main   # Trigger on pushes to main branch
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout the repository
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # Setup gcloud CLI
+      # 2️⃣ Authenticate to Google Cloud using JSON key
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      # 3️⃣ Set up gcloud CLI
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
 
-      # Configure Docker to use gcloud as a credential helper
+      # 4️⃣ Configure Docker to use Artifact Registry credentials
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker ${{ secrets.GCP_REGION }}-docker.pkg.dev --quiet
 
-      # Build & push backend (FastAPI)
+      # 5️⃣ Build and push backend (FastAPI)
       - name: Build and Push API
         run: |
           docker build -t ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/docker-repo/devops-qr-code-api:latest ./api
           docker push ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/docker-repo/devops-qr-code-api:latest
 
-      # Build & push frontend
+      # 6️⃣ Build and push frontend (Next.js)
       - name: Build and Push Frontend
         run: |
           docker build -t ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/docker-repo/devops-qr-code-frontend:latest ./front-end-nextjs
