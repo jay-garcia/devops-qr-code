@@ -3,3 +3,16 @@ service-account.json
 .venv/
 __pycache__/
 scratch.txt
+
+# Terraform state files (sensitive)
+*.tfstate
+*.tfstate.backup
+
+# Local Terraform working directory
+.terraform/
+
+# Crash logs
+crash.log
+
+# Sensitive variable files
+*.tfvars
