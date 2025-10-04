@@ -9,6 +9,40 @@ It generates QR Codes for the provided URL, the front-end is in NextJS and the A
 
 **API**: API that receives URLs and generates QR codes. The API stores the QR codes in cloud storage(AWS S3 Bucket).
 
+## 🌐 Live Deployment
+
+This FastAPI service is fully deployed on Google Kubernetes Engine (GKE) and connected with Google Cloud Platform (GCP) services for scalability and reliability.
+
+You can access the live application directly in your browser:
+
+http://34.26.82.149:80
+
+**Deployment Highlights**
+
+✅ Containerized with Docker and pushed to Google Container Registry (GCR)
+
+✅ Deployed on Google Kubernetes Engine (GKE) with managed node pools
+
+✅ Configured Load Balancer & Ingress to expose the service
+
+✅ Integrated with Google Cloud IAM & Workload Identity for secure service-to-service communication
+
+✅ Logs and monitoring via Cloud Logging & Cloud Monitoring
+
+✅ Highly available, scalable, and production-ready setup
+
+**🔄 Continuous Deployment (CI/CD)**
+
+This project includes a GitHub Actions pipeline that automates deployments:
+
+On every push to the main branch:
+
+🏗 Docker image is built
+📦 Image is pushed to Google Artifact Registry
+🚀 GKE deployment is updated to use the new image automatically
+
+This ensures the running application is always in sync with the latest changes in the repository, providing a seamless and production-grade development workflow.
+
 ## Running locally
 
 ### API
@@ -39,11 +73,16 @@ The front-end code exits in the `front-end-nextjs` directory. You can run the fr
 
 The goal is to get hands-on with DevOps practices like Containerization, CICD and monitoring.
 
-Look at the capstone project for more detials.
+## Authors & Contributors
 
-## Author
+Original Author: [Rishab Kumar](https://github.com/rishabkumar7)
 
-[Rishab Kumar](https://github.com/rishabkumar7)
+Cloud Deployment & Adaptation: [Jesus Almanzar Garcia] (https://github.com/jay-garcia) – Adapted the project for production by:
+
+-Containerizing with Docker
+-Deploying on Google Kubernetes Engine (GKE)
+-Configuring GCP services (IAM, Artifact Registry, Load Balancer, Monitoring)
+-Implementing GitHub Actions CI/CD pipeline for automated builds and deployments
 
 ## License
 

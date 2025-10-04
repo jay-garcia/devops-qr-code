@@ -13,7 +13,7 @@ export default function Home() {
       // const response = await axios.post(`http://localhost:8000/generate-qr/?url=${url}`);
       // const response = await axios.post(`http://34.138.111.78:8000/generate-qr/?url=${url}`);
       // const response = await axios.post('/generate-qr/', { url });
-      const response = await axios.post('http://34.138.111.78:8000/generate-qr/', { url });
+      const response = await axios.post('http://35.196.246.228:8000/generate-qr/', { url });
       setQrCodeUrl(response.data.qr_code_url);
     } catch (error) {
       console.error('Error generating QR Code:', error);

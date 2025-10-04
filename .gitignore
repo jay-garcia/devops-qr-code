@@ -7,6 +7,7 @@ scratch.txt
 # Terraform state files (sensitive)
 *.tfstate
 *.tfstate.backup
+*.tfstate.*
 
 # Local Terraform working directory
 .terraform/
@@ -16,3 +17,5 @@ crash.log
 
 # Sensitive variable files
 *.tfvars
+
+debug-pod.yaml
