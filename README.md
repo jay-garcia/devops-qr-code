@@ -19,17 +19,17 @@ http://34.26.82.149:80
 
 **Deployment Highlights**
 
-✅ Containerized with Docker and pushed to Google Container Registry (GCR)
+- ✅ Containerized with Docker and pushed to Google Container Registry (GCR)
 
-✅ Deployed on Google Kubernetes Engine (GKE) with managed node pools
+- ✅ Deployed on Google Kubernetes Engine (GKE) with managed node pools
 
-✅ Configured Load Balancer & Ingress to expose the service
+- ✅ Configured Load Balancer & Ingress to expose the service
 
-✅ Integrated with Google Cloud IAM & Workload Identity for secure service-to-service communication
+- ✅ Integrated with Google Cloud IAM & Workload Identity for secure service-to-service communication
 
-✅ Logs and monitoring via Cloud Logging & Cloud Monitoring
+- ✅ Logs and monitoring via Cloud Logging & Cloud Monitoring
 
-✅ Highly available, scalable, and production-ready setup
+- ✅ Highly available, scalable, and production-ready setup
 
 **🔄 Continuous Deployment (CI/CD)**
 
@@ -37,9 +37,11 @@ This project includes a GitHub Actions pipeline that automates deployments:
 
 On every push to the main branch:
 
-🏗 Docker image is built
-📦 Image is pushed to Google Artifact Registry
-🚀 GKE deployment is updated to use the new image automatically
+- 🏗 Docker image is built
+
+- 📦 Image is pushed to Google Artifact Registry
+
+- 🚀 GKE deployment is updated to use the new image automatically
 
 This ensures the running application is always in sync with the latest changes in the repository, providing a seamless and production-grade development workflow.
 
@@ -77,12 +79,15 @@ The goal is to get hands-on with DevOps practices like Containerization, CICD an
 
 Original Author: [Rishab Kumar](https://github.com/rishabkumar7)
 
-Cloud Deployment & Adaptation: [Jesus Almanzar Garcia] (https://github.com/jay-garcia) – Adapted the project for production by:
+Cloud Deployment & Adaptation: [Jesus Almanzar Garcia](https://github.com/jay-garcia) – Adapted the project for production by:
 
--Containerizing with Docker
--Deploying on Google Kubernetes Engine (GKE)
--Configuring GCP services (IAM, Artifact Registry, Load Balancer, Monitoring)
--Implementing GitHub Actions CI/CD pipeline for automated builds and deployments
+- Containerizing with Docker
+
+- Deploying on Google Kubernetes Engine (GKE)
+
+- Configuring GCP services (IAM, Artifact Registry, Load Balancer, Monitoring)
+
+- Implementing GitHub Actions CI/CD pipeline for automated builds and deployments
 
 ## License
 
