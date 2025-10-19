@@ -7,7 +7,7 @@ It generates QR Codes for the provided URL, the front-end is in NextJS and the A
 
 **Front-End** - A web application where users can submit URLs.
 
-**API**: API that receives URLs and generates QR codes. The API stores the QR codes in cloud storage(AWS S3 Bucket).
+**API**: API that receives URLs and generates QR codes. The API stores the QR codes in cloud storage(GCP storage bucket).
 
 ## 🌐 Live Deployment
 
